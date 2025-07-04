@@ -4,6 +4,13 @@ import { getDictionary } from "../../lib/dictionary";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import type { Metadata } from "next";
+import { Montserrat } from 'next/font/google'
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-montserrat',
+})
 
 export default async function Layout({
   children,
@@ -20,7 +27,7 @@ export default async function Layout({
   const dict = await getDictionary(safeLang);
 
   return (
-    <html lang={safeLang}>
+    <html lang={safeLang} className={montserrat.variable}>
       <body>
         <Header dict={dict} />
         {children}
