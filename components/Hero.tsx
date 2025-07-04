@@ -15,17 +15,26 @@ export default function Hero({ dict }: HeroProps) {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Video de fondo */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
-      >
-        <source src="/video/hero-energia.mp4" type="video/mp4" />
-        Tu navegador no soporta video HTML5.
-      </video>
+      {typeof window !== 'undefined' && window.innerWidth < 768 ? (
+  <img
+    src="/img/fondoimg.jpeg"
+    alt="Background"
+    className="absolute top-0 left-0 w-full h-full object-cover z-0"
+  />
+) : (
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    preload="auto"
+    className="absolute top-0 left-0 w-full h-full object-cover z-0"
+  >
+    <source src="/video/hero-energia.mp4" type="video/mp4" />
+    Tu navegador no soporta video HTML5.
+  </video>
+)}
+
 
       {/* Overlay oscuro */}
       <div className="absolute top-0 left-0 w-full h-full bg-black/60 z-10" />

@@ -25,8 +25,9 @@ export default function Footer({ dict }: FooterProps) {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         {/* Logo y nombre */}
         <div className="text-center md:text-left">
-          <h2 className="text-2xl font-bold text-[#9f28e7]">{dict.companyName}</h2>
-          <p className="text-sm text-gray-600 mt-2">{dict.companySlogan}</p>
+<h2 className="text-2xl font-xspace font-bold text-secondary" id='companyName'>
+  {dict.companyName}
+</h2>        <p className="text-sm text-gray-600 mt-2">{dict.companySlogan}</p>
         </div>
 
         {/* Enlaces */}

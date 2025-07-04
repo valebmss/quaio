@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-montserrat)', 'sans-serif'],
+        xspace: ['"XSpace"', 'sans-serif'], 
+
       },
       colors: {
         primary: '#caeb23',
