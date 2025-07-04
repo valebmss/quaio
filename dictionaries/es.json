@@ -6,5 +6,21 @@
     "heroTitleLine1": "Impulsamos la energía",
   "heroTitleLine2": "con inteligencia digital",
   "heroDescription": "Creamos soluciones de software para transformar el sector energético con innovación, eficiencia y tecnología.",
-  "contact-button": "Contáctanos"
+  "contact-button": "Contáctanos",
+  "services-section": {
+    "title": "Nuestros Servicios",
+    "items": [
+      "Asesorías – transformación digital, migración a la nube, ciberseguridad, gestión de datos, inteligencia artificial",
+      "Integraciones",
+      "Modelamiento de sistemas y datos",
+      "Gestión de datos",
+      "Ciberseguridad para la infraestructura eléctrica",
+      "Gestión de prototipos (experimentos)"
+    ]
+  },
+
+  "companyName": "Quaio",
+  "companySlogan": "Transformando la energía con tecnología.",
+  "currentPage": "Página actual",
+  "copyright": "Todos los derechos reservados."
 }
