@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 interface HeroProps {
   dict: {
@@ -20,6 +20,7 @@ export default function Hero({ dict }: HeroProps) {
         loop
         muted
         playsInline
+        preload="auto"
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
         <source src="/video/hero-energia.mp4" type="video/mp4" />
@@ -37,7 +38,8 @@ export default function Hero({ dict }: HeroProps) {
           transition={{ duration: 1 }}
           className="text-white text-4xl md:text-6xl font-semibold leading-tight mb-6 drop-shadow-lg"
         >
-          <span>{dict.heroTitleLine1}</span><br />
+          <span>{dict.heroTitleLine1}</span>
+          <br />
           <span className="text-[#caeb23]">{dict.heroTitleLine2}</span>
         </motion.h1>
 

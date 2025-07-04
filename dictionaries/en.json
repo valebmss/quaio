@@ -18,6 +18,11 @@
       "Prototype management (experiments)"
     ]
   },
+   "search": {
+    "placeholder": "Search...",
+    "noResults": "No results found",
+    "results": "results"
+  },
   "companyName": "Quaio",
   "companySlogan": "Transforming energy through technology.",
   "currentPage": "Current page",

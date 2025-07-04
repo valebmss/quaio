@@ -18,6 +18,11 @@
       "Gestión de prototipos (experimentos)"
     ]
   },
+   "search": {
+    "placeholder": "Buscar...",
+    "noResults": "No se encontraron resultados",
+    "results": "resultados"
+  },
 
   "companyName": "Quaio",
   "companySlogan": "Transformando la energía con tecnología.",
