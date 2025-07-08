@@ -21,7 +21,10 @@ const query = groq`
   }
 `;
 
-export default async function BlogList() {
+export default async function BlogList( { params }: { params: { slug: string } }) {
+      const slug = params.slug;
+
+  const post = await client.fetch(query, { slug });
   const posts = await client.fetch(query);
 
   return (
