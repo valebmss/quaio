@@ -57,7 +57,11 @@ type Props = {
   params: { slug: string };
 };
 
-export default async function PostPage({ params }: Props) {
+export default async function PostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const post = await client.fetch(query, { slug: params.slug });
 
   if (!post) {
