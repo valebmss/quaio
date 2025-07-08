@@ -3,6 +3,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
+
+interface BlogPost {
+  title: string;
+  slug: string;
+}
 
 interface SearchBarProps {
   dict: {
@@ -12,19 +18,19 @@ interface SearchBarProps {
       results: string;
     };
   };
-  data?: string[];
+  data?: BlogPost[];
 }
 
 export default function SearchBar({ dict, data = [] }: SearchBarProps) {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<string[]>([]);
+  const [results, setResults] = useState<BlogPost[]>([]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
 
-    const filtered = data.filter((item) =>
-      item.toLowerCase().includes(value.toLowerCase())
+    const filtered = data.filter((post) =>
+      post.title.toLowerCase().includes(value.toLowerCase())
     );
     setResults(filtered);
   };
@@ -60,8 +66,12 @@ export default function SearchBar({ dict, data = [] }: SearchBarProps) {
                   {results.length} {dict.search.results}
                 </p>
                 <ul className="space-y-2 text-gray-800 list-disc list-inside">
-                  {results.map((item, i) => (
-                    <li key={i}>{item}</li>
+                  {results.map((post, i) => (
+                    <li key={i}>
+                      <Link href={`/blog/${post.slug}`} className="text-secondary hover:underline">
+                        {post.title}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </>

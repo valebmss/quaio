@@ -12,6 +12,7 @@ interface HeaderProps {
     aboutUs: string;
     contact: string;
     requestDemo: string;
+    blog: string;
   };
 }
 
@@ -62,6 +63,9 @@ export default function Header({ dict }: HeaderProps) {
           </Link>
           <Link href="#nosotros" className="text-white hover:text-[#caeb23] transition">
             {dict.aboutUs}
+          </Link>
+          <Link href="/blog" className="text-white hover:text-[#caeb23] transition">
+            {dict.blog}
           </Link>
           <Link href="#contacto" className="text-white hover:text-[#caeb23] transition">
             {dict.contact}
