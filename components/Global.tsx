@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "@/components/Hero";
 import Servicios from "@/components/Servicios";
-import SearchBar from "@/components/SearchBar";
+import ClientSearchWrapper from '@/components/ClientSearchWrapper';
 import { groq } from 'next-sanity';
 import { createClient } from 'next-sanity';
 
@@ -13,14 +13,16 @@ const client = createClient({
 });
 
 const query = groq`
-  *[_type == "post"]{
+  *[_type == "post"] | order(_createdAt desc){
     title,
-    "slug": slug.current
+    slug,
+    excerpt
   }
 `;
 
+
 export default async function HomeClient({ dict }: { dict: any }) {
-    const posts: { title: string; slug: string }[] = await client.fetch(query);
+const posts: { title: string; slug: { current: string }; excerpt: string }[] = await client.fetch(query);
 
   return (
     <div>
@@ -28,7 +30,7 @@ export default async function HomeClient({ dict }: { dict: any }) {
         <Hero dict={dict} />
       </main>
       <section>
-        <SearchBar dict={dict} data={posts} />
+  <ClientSearchWrapper dict={dict} data={posts} />
       </section>
       <section>
         <Servicios dict={dict["services-section"]} />

@@ -2,7 +2,7 @@ import { getDictionary } from "../../lib/dictionary";
 import Global from "../../components/Global";
 
 type PageProps = {
-  params: Promise<{ lang: string | string[] | undefined }>;
+  readonly params: Promise<{ lang: string | string[] | undefined }>;
 };
 
 export default async function Page({ params }: PageProps) {

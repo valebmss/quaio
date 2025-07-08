@@ -1,18 +1,8 @@
+
 import { groq } from 'next-sanity';
 import { createClient } from 'next-sanity';
 import Image from 'next/image';
-import { PortableText } from '@portabletext/react';
-import { PortableTextComponents } from '@portabletext/react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { getDictionary } from "../../../lib/dictionary";
-
-
-type Params = {
-  params: { slug: string };
-
-};
-
+import { PortableText, PortableTextComponents } from '@portabletext/react';
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -40,30 +30,53 @@ const components: PortableTextComponents = {
   listItem: {
     bullet: ({ children }) => <li className="mb-1">{children}</li>,
   },
+  types: {
+    image: ({ value }) => {
+      const ref = value.asset?._ref;
+      if (!ref) return null;
+
+      const url = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${ref
+        .replace('image-', '')
+        .replace('-jpg', '.jpg')
+        .replace('-png', '.png')}`;
+
+      return (
+        <Image
+          src={url}
+          alt="Imagen del contenido"
+          width={800}
+          height={500}
+          className="rounded-lg my-6"
+        />
+      );
+    }
+  }
 };
 
-export default async function PostPage({ params }: Params) {
+type Props = {
+  params: { slug: string };
+};
+
+export default async function PostPage({ params }: Props) {
   const post = await client.fetch(query, { slug: params.slug });
 
-  if (!post) return <div className="text-center py-20 text-gray-500">Post no encontrado</div>;
-
-  // Formatear el _ref de la imagen
-  const getImageUrl = (ref: string) => {
-    return `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${ref
-      .replace('image-', '')
-      .replace('-jpg', '.jpg')
-      .replace('-png', '.png')}`;
-  };
+  if (!post) {
+    return (
+      <div className="text-center py-20 text-gray-500">Post no encontrado</div>
+    );
+  }
 
   return (
-    <>
     <article className="max-w-4xl mx-auto px-6 py-16">
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center text-black">{post.title}</h1>
 
       {post.mainImage?.asset?._ref && (
         <div className="relative w-full h-[400px] md:h-[500px] mb-10 rounded-xl overflow-hidden shadow-xl">
           <Image
-            src={getImageUrl(post.mainImage.asset._ref)}
+            src={`https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${post.mainImage.asset._ref
+              .replace('image-', '')
+              .replace('-jpg', '.jpg')
+              .replace('-png', '.png')}`}
             alt={post.title}
             fill
             className="object-cover"
@@ -77,8 +90,6 @@ export default async function PostPage({ params }: Params) {
         <PortableText value={post.body} components={components} />
       </div>
     </article>
-
-    </>
   );
 }
 

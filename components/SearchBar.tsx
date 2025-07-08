@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import Link from 'next/link';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 interface BlogPost {
   title: string;
-  slug: string;
+  slug: { current: string };
+  excerpt: string;
 }
 
 interface SearchBarProps {
@@ -22,7 +23,7 @@ interface SearchBarProps {
 }
 
 export default function SearchBar({ dict, data = [] }: SearchBarProps) {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState<BlogPost[]>([]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,18 +60,23 @@ export default function SearchBar({ dict, data = [] }: SearchBarProps) {
             className="mt-4 bg-white border border-gray-200 shadow-lg rounded-xl p-5 text-sm"
           >
             {results.length === 0 ? (
-              <p className="text-gray-500 text-center">{dict.search.noResults}</p>
+              <p className="text-gray-500 text-center">
+                {dict.search.noResults}
+              </p>
             ) : (
               <>
                 <p className="text-gray-500 mb-3 text-center">
                   {results.length} {dict.search.results}
                 </p>
-                <ul className="space-y-2 text-gray-800 list-disc list-inside">
+                <ul className="space-y-4 text-gray-800">
                   {results.map((post, i) => (
-                    <li key={i}>
-                      <Link href={`/blog/${post.slug}`} className="text-secondary hover:underline">
+                    <li key={i} className="pb-2 border-b border-gray-100">
+                      <Link href={`/blog/${post.slug.current}`}>
                         {post.title}
                       </Link>
+                      <p className="text-gray-500 text-sm mt-1">
+                        {post.excerpt}
+                      </p>
                     </li>
                   ))}
                 </ul>
@@ -82,3 +88,4 @@ export default function SearchBar({ dict, data = [] }: SearchBarProps) {
     </section>
   );
 }
+export type { SearchBarProps };
