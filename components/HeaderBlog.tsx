@@ -18,13 +18,18 @@ export default function HeaderBlog() {
           />
         </Link>
 
-        {/* Enlace de regreso */}
-        <Link
-          href="/blog"
-          className="text-sm md:text-base font-semibold text-primary hover:text-secondary transition-colors"
-        >
-          ← Volver al Blog
-        </Link>
+        {/* Menú del blog */}
+        <nav className="flex items-center gap-6 text-white text-sm font-medium">
+          <Link href="/blog" className="hover:text-primary transition-colors">
+            Inicio Blog
+          </Link>
+          <Link href="/blog/categorias" className="hover:text-primary transition-colors">
+            Categorías
+          </Link>
+          <Link href="/contacto" className="hover:text-primary transition-colors">
+            Contacto
+          </Link>
+        </nav>
       </div>
     </header>
   );
