@@ -138,6 +138,13 @@ export default function Header({ dict }: HeaderProps) {
             {dict.aboutUs}
           </Link>
           <Link
+            href="/blog"
+            className="block hover:text-[#caeb23] transition"
+            onClick={() => setMenuOpen(false)}
+          >
+            {dict.blog}
+          </Link>
+          <Link
             href="#contacto"
             className="block hover:text-[#caeb23] transition"
             onClick={() => setMenuOpen(false)}
