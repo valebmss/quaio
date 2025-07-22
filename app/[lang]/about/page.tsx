@@ -13,11 +13,12 @@ export default async function Page({ params }: PageProps) {
   const safeLang = lang === "es" || lang === "en" ? lang : "es";
 
   const dict = await getDictionary(safeLang);
-  return <AboutSection dict={{ about: {
-    title: dict.title,
-    subtitle: dict.subtitle,
-    description: dict.description,
-    mission: dict.mission,
-    vision: dict.vision
-  } }} />;
+  const aboutSection = (dict as any)["about-section"] ?? dict;
+  return <AboutSection dict={ {
+    title: aboutSection.title,
+    subtitle: aboutSection.subtitle,
+    description: aboutSection.description,
+    mission: aboutSection.mission,
+    vision: aboutSection.vision
+  } } />;
 }

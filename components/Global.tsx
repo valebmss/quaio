@@ -4,6 +4,7 @@ import Servicios from "@/components/Servicios";
 import ClientSearchWrapper from '@/components/ClientSearchWrapper';
 import { groq } from 'next-sanity';
 import { createClient } from 'next-sanity';
+import AboutSection from "@/components/About";
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -34,6 +35,9 @@ const posts: { title: string; slug: { current: string }; excerpt: string }[] = a
       </section>
       <section>
         <Servicios dict={dict["services-section"]} />
+      </section>
+      <section>
+        <AboutSection dict={dict["about-section"]} />
       </section>
     </div>
   );

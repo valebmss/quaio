@@ -17,7 +17,7 @@ export default function Servicios({ dict }: ServiciosProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl md:text-4xl font-bold mb-10 text-[#9f28e7]"
+          className="text-4xl md:text-4xl font-bold mb-10 text-[#9f28e7]"
         >
           {dict.title}
         </motion.h2>
