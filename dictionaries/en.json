@@ -3,11 +3,13 @@
   "aboutUs": "About us",
   "contact": "Contact",
   "requestDemo": "Request a demo",
+  "about-section": {
   "title": "About Quaio",
   "subtitle": "Driving the energy future with technology",
   "description": "Quaio is a software company specialized in digital solutions for the energy sector. We combine innovation, efficiency, and design to transform how companies in the industry operate.",
   "mission": "Our Mission",
-  "vision": "Our Vision",
+  "vision": "Our Vision"
+  },
   "inicio": "Home", 
   
   "blog": "Blog",
