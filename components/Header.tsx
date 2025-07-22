@@ -21,6 +21,8 @@ export default function Header({ dict }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const lang = pathname.split('/')[1] || 'es';
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +63,7 @@ export default function Header({ dict }: HeaderProps) {
           <Link href="#servicios" className="text-white hover:text-[#caeb23] transition">
             {dict.services}
           </Link>
-          <Link href="/about" className="text-white hover:text-[#caeb23] transition">
+          <Link  href={`/${lang}/about`} className="text-white hover:text-[#caeb23] transition">
             {dict.aboutUs}
           </Link>
           <Link href="/blog" className="text-white hover:text-[#caeb23] transition">
@@ -131,7 +133,7 @@ export default function Header({ dict }: HeaderProps) {
             {dict.services}
           </Link>
           <Link
-            href="/about"
+             href={`/${lang}/about`}
             className="block hover:text-[#caeb23] transition"
             onClick={() => setMenuOpen(false)}
           >
