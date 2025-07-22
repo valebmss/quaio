@@ -8,6 +8,7 @@ import { useRouter, usePathname } from 'next/navigation';
 
 interface HeaderProps {
   dict: {
+    inicio: string;
     services: string;
     aboutUs: string;
     contact: string;
@@ -60,6 +61,9 @@ export default function Header({ dict }: HeaderProps) {
 
         {/* Navegación en desktop */}
         <nav className="hidden md:flex space-x-8 font-medium items-center">
+          <Link href="/" className="text-white hover:text-[#caeb23] transition">
+            {dict.inicio}
+          </Link>
           <Link href="#servicios" className="text-white hover:text-[#caeb23] transition">
             {dict.services}
           </Link>
@@ -125,6 +129,13 @@ export default function Header({ dict }: HeaderProps) {
       {/* Menú móvil desplegable */}
       {menuOpen && (
         <div className="md:hidden bg-black/90 backdrop-blur-sm text-white px-6 py-4 space-y-4 text-center transition-all">
+          <Link
+            href="/"
+            className="block hover:text-[#caeb23] transition"
+            onClick={() => setMenuOpen(false)}
+          >
+            {dict.inicio}
+          </Link>
           <Link
             href="#servicios"
             className="block hover:text-[#caeb23] transition"
