@@ -33,7 +33,7 @@ export default function AboutSection({ dict }: AboutSectionProps) {
           <div className="grid md:grid-cols-2 gap-6 pt-6 border-t border-gray-700">
             <div>
               <h3 className="text-xl font-semibold text-secondary mb-2">
-                🧭 {dict.about.mission}
+                 {dict.about.mission}
               </h3>
               <p className="text-gray-300 text-sm md:text-base">
                 Proporcionar soluciones digitales inteligentes y a medida para el sector energético, impulsando la eficiencia y la transformación tecnológica.
@@ -42,7 +42,7 @@ export default function AboutSection({ dict }: AboutSectionProps) {
 
             <div>
               <h3 className="text-xl font-semibold text-secondary mb-2">
-                🔮 {dict.about.vision}
+                 {dict.about.vision}
               </h3>
               <p className="text-gray-300 text-sm md:text-base">
                 Ser líderes en innovación tecnológica para empresas energéticas, creando herramientas que cambien el futuro de la industria.
