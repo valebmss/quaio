@@ -61,7 +61,7 @@ export default function Header({ dict }: HeaderProps) {
           <Link href="#servicios" className="text-white hover:text-[#caeb23] transition">
             {dict.services}
           </Link>
-          <Link href="#nosotros" className="text-white hover:text-[#caeb23] transition">
+          <Link href="/about" className="text-white hover:text-[#caeb23] transition">
             {dict.aboutUs}
           </Link>
           <Link href="/blog" className="text-white hover:text-[#caeb23] transition">
@@ -131,7 +131,7 @@ export default function Header({ dict }: HeaderProps) {
             {dict.services}
           </Link>
           <Link
-            href="#nosotros"
+            href="/about"
             className="block hover:text-[#caeb23] transition"
             onClick={() => setMenuOpen(false)}
           >
